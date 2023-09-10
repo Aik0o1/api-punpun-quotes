@@ -9,7 +9,7 @@ const results = []
 
 async function lerCSV() {
     return new Promise((resolve, reject) => {
-        fs.createReadStream('server/finalQuotes.csv')
+        fs.createReadStream('finalQuotes.csv')
             .pipe(csv())
             .on('data', (data) => results.push(data))
             .on('end', () => {
