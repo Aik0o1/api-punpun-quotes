@@ -5,11 +5,14 @@ const port = process.env.PORT || 5000
 
 const fs = require("fs")
 const csv = require("csv-parser")
+const path = require("path")
 const results = []
+
+const quotesFilePath = path.join(__dirname, 'finalQuotes.csv') 
 
 async function lerCSV() {
     return new Promise((resolve, reject) => {
-        fs.createReadStream("finalQuotes.csv")
+        fs.createReadStream(quotesFilePath)
             .pipe(csv())
             .on('data', (data) => results.push(data))
             .on('end', () => {
